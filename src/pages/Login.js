@@ -51,7 +51,7 @@ class Login extends React.Component {
                     data-testid="login-name-input"
                     name="usarName"
                     type="text"
-                    value={ userName }
+                    // value={ userName }
                     onChange={ this.changes }
                   />
                 </label>

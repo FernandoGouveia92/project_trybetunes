@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '../components/Header';
 
 class Profile extends React.Component {
   render() {
     return (
-      <div data-testid="page-profile">Eu sou o profile</div>
+      <div data-testid="page-profile">
+        Eu sou o profile
+        <Header />
+      </div>
     );
   }
 }
