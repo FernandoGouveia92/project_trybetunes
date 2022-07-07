@@ -63,7 +63,7 @@ class Login extends React.Component {
               previewUrl={ e.previewUrl }
               trackId={ e.trackId }
               favoriteMusic={ favoriteMusic }
-              checkedStatus={ favoriteMusic.some((ee) => ee.trackId === e.trackId) }
+              checkedStatus={ !!favoriteMusic.some((ee) => ee.trackId === e.trackId) }
             />
           ))
         }
