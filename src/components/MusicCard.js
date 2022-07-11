@@ -21,7 +21,7 @@ class MusicCard extends React.Component {
   }
 
   isFavorite = async () => {
-    const { favoriteMusic, trackId } = this.props;
+    const { trackId } = this.props;
     const favoriteSongsGot = await getFavoriteSongs();
     const favStatus = favoriteSongsGot.some((e) => e.trackId === trackId);
     this.setState({
@@ -52,7 +52,7 @@ class MusicCard extends React.Component {
 
   render() {
     const { inputStatus, loading } = this.state;
-    const { trackName, previewUrl, trackId, favoriteMusic } = this.props;
+    const { trackName, previewUrl, trackId } = this.props;
     // console.log(favoriteMusic);
     return (
       <div>
