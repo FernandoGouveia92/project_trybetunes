@@ -49,9 +49,9 @@ class Login extends React.Component {
                   Insira seu nome
                   <input
                     data-testid="login-name-input"
-                    name="usarName"
+                    name="userName"
                     type="text"
-                    // value={ userName }
+                    value={ userName }
                     onChange={ this.changes }
                   />
                 </label>
