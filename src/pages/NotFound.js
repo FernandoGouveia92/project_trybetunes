@@ -4,7 +4,7 @@ class NotFound extends React.Component {
   render() {
     return (
       <div data-testid="page-not-found">
-        ERROR 404 MODAFOKA!!!1
+        Não encontrato - Status: 404.
       </div>
     );
   }

@@ -1,8 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from '../components/Loading';
+import {
+  AlbumContainer,
+  AlbumLink,
+  AlbunsContainer,
+  CardContainer,
+  SearchContent,
+  StyledButton,
+  StyledInput,
+  StyledLabel,
+  Title } from '../styles/search/styles';
 
 class Search extends React.Component {
   constructor() {
@@ -33,6 +42,7 @@ class Search extends React.Component {
     });
     const { searchValue } = this.state;
     const resultAlbumFetch = await searchAlbumsAPI(searchValue);
+    console.log(resultAlbumFetch);
     if (resultAlbumFetch.length === 0) {
       this.setState({
         artistNotFound: true,
@@ -60,53 +70,57 @@ class Search extends React.Component {
 
     return (
       <div>
-        <div data-testid="page-search">
-          Search
-          <label htmlFor="searchInput">
-            <input
+        <Header />
+        <SearchContent data-testid="page-search">
+          <StyledLabel htmlFor="searchInput">
+            Search
+            <StyledInput
               data-testid="search-artist-input"
               type="text"
+              name="searchInput"
               value={ searchValue }
               onChange={ this.searchChanges }
             />
-          </label>
-          <button
+          </StyledLabel>
+          <StyledButton
             disabled={ btnDisabled.length < searchNumb }
             type="submit"
             data-testid="search-artist-button"
             onClick={ this.handleChange }
           >
             Pesquisar
-          </button>
-        </div>
-        <Header />
+          </StyledButton>
+        </SearchContent>
         {
           artistNotFound && <p>Nenhum álbum foi encontrado</p>
         }
-        {
-          loading ? (<Loading />)
-            : (
-              click && (
-                <div>
-                  <p>
-                    {`Resultado de álbuns de: 
-                    ${name}`}
-                  </p>
-                  {searchedArtist.map((e, index) => (
-                    <div key={ index }>
-                      <p>{e.colectionName}</p>
-                      <Link
-                        to={ `/album/${e.collectionId}` }
-                        data-testid={ `link-to-album-${e.collectionId}` }
-                      >
-                        {e.collectionName}
-                      </Link>
-                    </div>
-                  ))}
-                </div>
+        <AlbunsContainer>
+          {
+            loading ? (<Loading />)
+              : (
+                click && (
+                  <CardContainer>
+                    <Title>
+                      {`Resultado de álbuns de: 
+                      ${name}`}
+                    </Title>
+                    {searchedArtist.map((e, index) => (
+                      <AlbumContainer key={ index }>
+                        <p>{e.colectionName}</p>
+                        <AlbumLink
+                          to={ `/album/${e.collectionId}` }
+                          data-testid={ `link-to-album-${e.collectionId}` }
+                        >
+                          {e.collectionName}
+                        </AlbumLink>
+                        <img alt="art_work" src={ e.artworkUrl100 } />
+                      </AlbumContainer>
+                    ))}
+                  </CardContainer>
+                )
               )
-            )
-        }
+          }
+        </AlbunsContainer>
       </div>
     );
   }

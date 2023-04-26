@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
+import {
+  HeaderContainer,
+  HeaderUserName,
+  Nav,
+  NavLink } from '../styles/header/styles';
 
 class Header extends React.Component {
   constructor() {
@@ -22,20 +27,22 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header data-testid="header-component">
-        <h1 data-testid="header-user-name">{ this.showUserName() }</h1>
-        <nav>
-          <Link to="/search" data-testid="link-to-search">
+      <HeaderContainer data-testid="header-component">
+        <HeaderUserName data-testid="header-user-name">
+          { this.showUserName() }
+        </HeaderUserName>
+        <Nav>
+          <NavLink to="/search" data-testid="link-to-search">
             Search
-          </Link>
-          <Link to="/favorites" data-testid="link-to-favorites">
+          </NavLink>
+          <NavLink to="/favorites" data-testid="link-to-favorites">
             Favorites
-          </Link>
-          <Link to="/profile" data-testid="link-to-profile">
+          </NavLink>
+          <NavLink to="/profile" data-testid="link-to-profile">
             Profile
-          </Link>
-        </nav>
-      </header>
+          </NavLink>
+        </Nav>
+      </HeaderContainer>
     );
   }
 }
