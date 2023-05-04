@@ -58,4 +58,4 @@ ReactJS, CSS, HTML5, Styled Components, Local Storage
 
 #### BREVE DESCRIÇÃO
 
-Neste projeto, foram aplicados conhecimentos sobre render, classes, life cycle, styled components, componentização, React Router
+Neste projeto, foram aplicados conhecimentos sobre render, classes, life cycle, styled components, componentização e React Router.
