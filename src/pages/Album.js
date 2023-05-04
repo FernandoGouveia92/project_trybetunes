@@ -5,6 +5,13 @@ import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
 import Loading from '../components/Loading';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import {
+  AlbumContainer,
+  AlbumDescripContainer,
+  StyledAlbumName,
+  StyledH2,
+  StyledAlbumArt,
+  AlbumInfo } from '../styles/album/styles';
 
 class Login extends React.Component {
   constructor() {
@@ -42,31 +49,38 @@ class Login extends React.Component {
 
   render() {
     const { album, musicList, loading, favoriteMusic } = this.state;
-    console.log(favoriteMusic);
     return (
       <div data-testid="page-album">
         <Header />
         {
           loading ? <Loading />
             : (
-              <div>
-                <h2 data-testid="artist-name">{ album?.artistName}</h2>
-                <p data-testid="album-name">{ album?.collectionName}</p>
-              </div>
+              <AlbumDescripContainer>
+                <AlbumInfo>
+                  <StyledH2 data-testid="artist-name">{ album?.artistName}</StyledH2>
+                  <StyledAlbumName
+                    data-testid="album-name"
+                  >
+                    { album?.collectionName}
+                  </StyledAlbumName>
+                </AlbumInfo>
+                <StyledAlbumArt src={ album?.artworkUrl100 } />
+              </AlbumDescripContainer>
             )
         }
-        {
-          musicList.map((e) => (
-            <MusicCard
-              key={ e.trackId }
-              trackName={ e.trackName }
-              previewUrl={ e.previewUrl }
-              trackId={ e.trackId }
-              favoriteMusic={ favoriteMusic }
-              // checkedStatus={ !!favoriteMusic.some((ee) => ee.trackId === e.trackId) }
-            />
-          ))
-        }
+        <AlbumContainer>
+          {
+            musicList.map((e) => (
+              <MusicCard
+                key={ e.trackId }
+                trackName={ e.trackName }
+                previewUrl={ e.previewUrl }
+                trackId={ e.trackId }
+                favoriteMusic={ favoriteMusic }
+              />
+            ))
+          }
+        </AlbumContainer>
       </div>
     );
   }

@@ -1,9 +1,10 @@
 import React from 'react';
+import LoadingText from '../styles/loading/styles';
 
 class Loading extends React.Component {
   render() {
     return (
-      <p>Carregando...</p>
+      <LoadingText>Carregando...</LoadingText>
     );
   }
 }

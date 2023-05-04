@@ -1,8 +1,13 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import { FieldsContainer,
+  LoginButton,
+  LoginContainer,
+  LoginLabel,
+  LoginTitle,
+  LoginInputField } from '../styles/login/styles';
 
 class Login extends React.Component {
   constructor() {
@@ -37,25 +42,26 @@ class Login extends React.Component {
     const { userName, loading, userCreated } = this.state;
 
     return (
-      <div>
+      <LoginContainer>
         {
           userCreated && <Redirect to="/search" />
         }
         {
           loading ? (<Loading />)
             : (
-              <div data-testid="page-login">
-                <label htmlFor="userNameInput">
+              <FieldsContainer data-testid="page-login">
+                <LoginTitle>Trybetunes</LoginTitle>
+                <LoginLabel htmlFor="userNameInput">
                   Insira seu nome
-                  <input
+                  <LoginInputField
                     data-testid="login-name-input"
                     name="userName"
                     type="text"
                     value={ userName }
                     onChange={ this.changes }
                   />
-                </label>
-                <button
+                </LoginLabel>
+                <LoginButton
                   htmlFor="btnEnter"
                   type="submit"
                   name="btnStatus"
@@ -64,11 +70,11 @@ class Login extends React.Component {
                   onClick={ this.btnValidator }
                 >
                   Entrar
-                </button>
-              </div>
+                </LoginButton>
+              </FieldsContainer>
             )
         }
-      </div>
+      </LoginContainer>
     );
   }
 }
