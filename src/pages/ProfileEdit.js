@@ -1,16 +1,22 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
-import { getUser } from '../services/userAPI';
+import { getUser, updateUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import Form from '../styles/profileEdit/styles';
 
 class ProfileEdit extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      user: {},
+      nome: '',
+      email: '',
+      description: '',
+      picture: '',
       loading: true,
       buttonStatus: 'true',
+      userUpdated: false,
     };
   }
 
@@ -19,61 +25,81 @@ class ProfileEdit extends React.Component {
   }
 
   fetchUserInfo = async () => {
-    const user = await getUser();
+    const userInfo = await getUser();
+    console.log(userInfo);
     this.setState({
-      user,
+      name: userInfo.name,
+      email: userInfo.email,
+      description: userInfo.description,
+      picture: userInfo.image,
       loading: false,
     });
   }
 
-  // Returns a boolean
   emailValidation = (email) => {
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return emailRegex.test(email);
   }
 
-  // Returns a boolean
-  fieldsValidation = () => {
-    if (user.name && user.email && user.description) {
-      return true;
+  fieldsValidation = (name, email, description) => {
+    if (!name && !email && !description) {
+      return false;
     }
+    return true;
   }
 
   handleSubmit = async (event) => {
+    const { name, email, description, picture } = this.state;
     event.preventDefault();
-    if (this.emailValidation && this.fieldsValidation) {
+    const updatedUser = {
+      name,
+      email,
+      description,
+      picture,
+    };
+    if (
+      this.emailValidation(email)
+      && this.fieldsValidation(name, description, picture)
+    ) {
       this.setState({
         buttonStatus: false,
       });
+      await updateUser(updatedUser);
+      this.setState({ userUpdated: true });
     }
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState(prevState => ({
-      user: {
-        ...prevState.user,
-        [name]: value,
-      },
-    }));
+    this.setState({ [name]: value });
   }
 
   render() {
-    const { user, loading, buttonStatus } = this.state;
+    const {
+      name,
+      email,
+      description,
+      picture,
+      loading,
+      buttonStatus,
+      userUpdated } = this.state;
     return (
       <div data-testid="page-profile-edit">
         <Header />
         {
+          userUpdated && <Redirect to="/profile" />
+        }
+        {
           loading ? <Loading />
             : (
-              <form onSubmit={ this.handleSubmit }>
+              <Form onSubmit={ this.handleSubmit }>
                 <label htmlFor="userName">
                   Nome:
                   <input
                     data-testid="edit-input-name"
-                    name="userName"
+                    name="name"
                     type="text"
-                    value={ user.name }
+                    value={ name }
                     onChange={ this.handleChange }
                   />
                 </label>
@@ -81,9 +107,9 @@ class ProfileEdit extends React.Component {
                   E-mail:
                   <input
                     data-testid="edit-input-email"
-                    name="userEmail"
+                    name="email"
                     type="text"
-                    value={ user.email }
+                    value={ email }
                     onChange={ this.handleChange }
                   />
                 </label>
@@ -91,9 +117,9 @@ class ProfileEdit extends React.Component {
                   Description:
                   <input
                     data-testid="edit-input-description"
-                    name="userDescription"
+                    name="description"
                     type="text"
-                    value={ user.description }
+                    value={ description }
                     onChange={ this.handleChange }
                   />
                 </label>
@@ -101,9 +127,9 @@ class ProfileEdit extends React.Component {
                   Picture:
                   <input
                     data-testid="edit-input-image"
-                    name="userImage"
+                    name="picture"
                     type="file"
-                    value={ user.image }
+                    value={ picture }
                     onChange={ this.handleChange }
                   />
                 </label>
@@ -114,7 +140,7 @@ class ProfileEdit extends React.Component {
                 >
                   Confirmar
                 </button>
-              </form>
+              </Form>
             )
         }
       </div>

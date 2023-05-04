@@ -1,61 +1,44 @@
 import styled from 'styled-components';
 
-const UserProfileContainer = styled.div`
+const Form = styled.form`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  margin: 20px;
-  padding: 15px;
-`;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  margin-left: 8px;
+  margin-top: 8px;
 
-const UserInfo = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: white;
+  }
 
-const UserImg = styled.img`
-  border-radius: 50%;
-`;
+  input[type="text"], input[type="file"] {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
 
-const UserName = styled.p`
-  font-weight: bolder;
-`;
-
-const UserEmail = styled.p`
-  font-weight: bolder;
-`;
-
-const UserDescription = styled.p`
-  font-weight: bolder;
-`;
-
-const ProfileEditLink = styled.a`
-  padding: 0.5rem;
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
+  button[type="submit"] {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #0077b6;
     color: #fff;
-    background-color: #000;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 `;
 
-const UserImgAndLink = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-export {
-  UserProfileContainer,
-  UserImg,
-  UserInfo,
-  UserName,
-  UserEmail,
-  UserDescription,
-  ProfileEditLink,
-  UserImgAndLink,
-};
+export default Form;

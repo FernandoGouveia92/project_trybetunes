@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
 import {
@@ -22,7 +21,12 @@ class Header extends React.Component {
       getUser().then((response) => this.setState({ showName: response }));
       return <Loading />;
     }
-    return <p>{showName.name}</p>;
+    return (
+      <p>
+        Olá,
+        {' '}
+        {showName.name}
+      </p>);
   }
 
   render() {
@@ -32,6 +36,9 @@ class Header extends React.Component {
           { this.showUserName() }
         </HeaderUserName>
         <Nav>
+          <NavLink to="/">
+            Home
+          </NavLink>
           <NavLink to="/search" data-testid="link-to-search">
             Search
           </NavLink>

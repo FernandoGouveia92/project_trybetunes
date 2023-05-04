@@ -35,6 +35,7 @@ const StyledLabel = styled.label`
 
 const StyledInput = styled.input`
   margin-left: 6px;
+  padding: 3px;
   border-radius: 8px;
   border: none;
 `;
@@ -42,70 +43,68 @@ const StyledInput = styled.input`
 const AlbunsContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 9px;
+
 `;
 
 const CardContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  margin: 16px;
+  margin: 10px;
   width: 80%;
-  max-width: 80%;
   color: white;
-  font-size: larger;
+  font-size: large;
   display:flex;
   justify-content: center;
+  flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
   gap:8px;
 `;
+
 const Title = styled.p`
   font-size: 30px;
   font-weight: bold;
   color:white;
   display: flex;
-  justify-self: flex-start;
+  /* justify-self: flex-start; */
 `;
 
 const AlbumContainer = styled.div`
-  width:24%;
-  max-width: 45%;
+  width: 22%;
   display: flex;
-  align-items: center;
-  margin-bottom: 16px;
+  flex-direction: column;
+  margin-bottom: 10px;
   border-radius: 10px;
   background-color: #9BA4B5 ;
   padding: 8px;
-
   transition: all 0.2s ease-in-out;
   &:hover {
     color:#212A3E;
     transform: scale(1.05)
   }
 
-  p {
-    margin-right: 8px;
-  }
-
   img {
-    width: 45%;
+    display: flex;
+    align-self: center;
+    width: 150px;
+    border-radius: 8px;
+    margin-bottom: 4px;
   }
 `;
 
 const AlbumLink = styled(Link)`
   color: black;
-  width:45%;
+  width: 150px;
   font-size:large;
   font-weight: bold;
   text-decoration: none;
-  /* margin-left: 10px; */
   display: flex;
-  text-align: center;
-  
-  /* border: 2px yellow solid; */
+  align-self: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   
   transition: all 0.2s ease-in-out;
   &:hover {
@@ -126,7 +125,7 @@ const ErrorMessage = styled.p`
 
 const ContentAnswerContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
   margin-top: 20px;

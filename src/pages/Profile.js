@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import {
+  FieldDescription,
   ProfileEditLink,
   UserDescription,
   UserEmail,
@@ -17,8 +18,12 @@ class Profile extends React.Component {
     super();
 
     this.state = {
-      user: {},
+      name: '',
+      email: '',
+      description: '',
+      picture: '',
       loading: true,
+      stockPhoto: '',
     };
   }
 
@@ -26,20 +31,29 @@ class Profile extends React.Component {
     this.handleChange();
   }
 
-  componentDidUpdate() {
+  componentWillUnmount() {
     this.handleChange();
   }
 
+  handleImgError = () => {
+    const defaultImgUrl = 'https://images.unsplash.com/photo-1519681393784-d120267933ba';
+    this.setState({ stockPhoto: defaultImgUrl });
+  };
+
   handleChange = async () => {
-    const user = await getUser();
+    const userInfo = await getUser();
+    console.log(userInfo);
     this.setState({
-      user,
+      name: userInfo.name,
+      email: userInfo.email,
+      description: userInfo.description,
+      picture: userInfo.image,
       loading: false,
     });
   }
 
   render() {
-    const { user, loading } = this.state;
+    const { name, email, description, picture, loading, stockPhoto } = this.state;
     return (
       <div data-testid="page-profile">
         <Header />
@@ -49,14 +63,37 @@ class Profile extends React.Component {
               : (
                 <UserInfo>
                   <UserImgAndLink>
-                    <UserImg alt="User" src={ user.image } data-testid="profile-image" />
+                    <UserImg
+                      alt="User"
+                      value={ picture && stockPhoto }
+                      data-testid="profile-image"
+                      onError={ this.handleImgError }
+                    />
                     <ProfileEditLink href="/profile/edit">Editar Perfil</ProfileEditLink>
                   </UserImgAndLink>
-                  <div>
-                    <UserName>{user.name}</UserName>
-                    <UserEmail>{user.email}</UserEmail>
-                    <UserDescription>{user.description}</UserDescription>
-                  </div>
+                  <userTextData>
+                    <FieldDescription>
+                      Nome:
+                      {' '}
+                    </FieldDescription>
+                    <UserName>
+                      {name}
+                    </UserName>
+                    <FieldDescription>
+                      E-mail:
+                      {' '}
+                    </FieldDescription>
+                    <UserEmail>
+                      {email}
+                    </UserEmail>
+                    <FieldDescription>
+                      Description:
+                      {' '}
+                    </FieldDescription>
+                    <UserDescription>
+                      {description}
+                    </UserDescription>
+                  </userTextData>
                 </UserInfo>
               )
           }
