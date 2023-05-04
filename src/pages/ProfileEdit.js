@@ -10,7 +10,7 @@ class ProfileEdit extends React.Component {
     super();
 
     this.state = {
-      nome: '',
+      name: '',
       email: '',
       description: '',
       picture: '',
