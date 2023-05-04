@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaStar, FaRegStar } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
@@ -24,7 +25,6 @@ class MusicCard extends React.Component {
   componentDidMount() {
     this.isFavorite();
     getFavoriteSongs();
-    // console.log(this.isFavorite());
   }
 
   isFavorite = async () => {
@@ -86,6 +86,7 @@ class MusicCard extends React.Component {
                     checked={ inputStatus }
                     onChange={ this.handleChange }
                   />
+                  { inputStatus ? <FaStar /> : <FaRegStar />}
                 </StyledLabel>
               </TrackWrapper>
             )

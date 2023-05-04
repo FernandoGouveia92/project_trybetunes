@@ -9,7 +9,9 @@ import {
   AlbumContainer,
   AlbumDescripContainer,
   StyledAlbumName,
-  StyledH2 } from '../styles/album/styles';
+  StyledH2,
+  StyledAlbumArt,
+  AlbumInfo } from '../styles/album/styles';
 
 class Login extends React.Component {
   constructor() {
@@ -47,7 +49,6 @@ class Login extends React.Component {
 
   render() {
     const { album, musicList, loading, favoriteMusic } = this.state;
-    console.log(favoriteMusic);
     return (
       <div data-testid="page-album">
         <Header />
@@ -55,12 +56,15 @@ class Login extends React.Component {
           loading ? <Loading />
             : (
               <AlbumDescripContainer>
-                <StyledH2 data-testid="artist-name">{ album?.artistName}</StyledH2>
-                <StyledAlbumName
-                  data-testid="album-name"
-                >
-                  { album?.collectionName}
-                </StyledAlbumName>
+                <AlbumInfo>
+                  <StyledH2 data-testid="artist-name">{ album?.artistName}</StyledH2>
+                  <StyledAlbumName
+                    data-testid="album-name"
+                  >
+                    { album?.collectionName}
+                  </StyledAlbumName>
+                </AlbumInfo>
+                <StyledAlbumArt src={ album?.artworkUrl100 } />
               </AlbumDescripContainer>
             )
         }
@@ -73,7 +77,6 @@ class Login extends React.Component {
                 previewUrl={ e.previewUrl }
                 trackId={ e.trackId }
                 favoriteMusic={ favoriteMusic }
-              // checkedStatus={ !!favoriteMusic.some((ee) => ee.trackId === e.trackId) }
               />
             ))
           }

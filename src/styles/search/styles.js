@@ -41,7 +41,8 @@ const StyledInput = styled.input`
 
 const AlbunsContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 9px;
 `;
@@ -51,31 +52,84 @@ const CardContainer = styled.div`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
   margin: 16px;
-  max-width: 800px;
+  width: 80%;
+  max-width: 80%;
   color: white;
   font-size: larger;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap:8px;
 `;
-
 const Title = styled.p`
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
-  margin-bottom: 8px;
+  color:white;
+  display: flex;
+  justify-self: flex-start;
 `;
 
 const AlbumContainer = styled.div`
+  width:24%;
+  max-width: 45%;
   display: flex;
   align-items: center;
-  /* background-color: #FFFFFF; */
   margin-bottom: 16px;
-  
+  border-radius: 10px;
+  background-color: #9BA4B5 ;
+  padding: 8px;
+
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    color:#212A3E;
+    transform: scale(1.05)
+  }
+
   p {
     margin-right: 8px;
+  }
+
+  img {
+    width: 45%;
   }
 `;
 
 const AlbumLink = styled(Link)`
-  color: #0070F3;
+  color: black;
+  width:45%;
+  font-size:large;
   font-weight: bold;
+  text-decoration: none;
+  /* margin-left: 10px; */
+  display: flex;
+  text-align: center;
+  
+  /* border: 2px yellow solid; */
+  
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    color:#212A3E;
+    transform: scale(1.05)
+  }
+`;
+
+const ErrorMessage = styled.p`
+  color: white;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size:30px;
+  font-weight: bold;
+  `;
+
+const ContentAnswerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
 `;
 
 export {
@@ -84,9 +138,11 @@ export {
   StyledButton,
   StyledLabel,
   StyledInput,
+  ContentAnswerContainer,
   AlbunsContainer,
   CardContainer,
   Title,
   AlbumContainer,
   AlbumLink,
+  ErrorMessage,
 };
