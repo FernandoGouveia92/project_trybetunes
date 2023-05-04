@@ -17,7 +17,7 @@ Todos os arquivos dentro da pasta /src foram criados e desenvolvidos por mim.
 Clone o projeto
 
 ```bash
-  git clone git@github.com:FernandoGouveia92/projecto-trybetunes.git
+  git clone git@github.com:FernandoGouveia92/project_trybetunes.git
 ```
 
 Entre no diretório do projeto
