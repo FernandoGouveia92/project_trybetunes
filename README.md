@@ -1,10 +1,42 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# PROJETO TRYBETUNES
+
+O projeto Trybetunes foi um projeto desenvolvido para praticar a construção de uma aplicação fazendo uso de componentes, depois utilizados para montar páginas, fazendo uso de reutilização de recursos, evitando repetição de código e tornando o código menos verboso e denso, facilitando a sua leitura.
+
+Sendo um dos primeiros projetos desenvolvidos durante o módulo de front-end na Trybe, entendi a necessidade de componentizar a aplicação para fácil reutilização e, inclusive, estilização (no caso, fiz uso do Styled Components).
+
+---
+
+#### COMPONENTES DESENVOLVIDOS POR MIM
+
+Todos os arquivos dentro da pasta /src foram criados e desenvolvidos por mim.
+
+---
+
+### PARA INICIALIZAR O PROJETO
+
+npm i
+
+npm start
+
+a aplicação será inicializada no seu browser
+
+---
+
+### ATENTAR PARA VERSÃO DO NODE
+
+Este projeto utiliza a versão 16 do Node.
+---
+
+#### ARQUIVOS E/OU DIRETÓRIOS FEITOS PELA TRYBE
+
+Quaisquer outros arquivos/diretórios que fazem parte do projeto, foram providenciados pela Trybe School.
+
+---
+
+#### TECNOLOGIAS
+
+ReactJS, CSS, HTML5, Styled Components, Local Storage
+
+#### BREVE DESCRIÇÃO
+
+Neste projeto, foram aplicados conhecimentos sobre render, classes, life cycle, styled components, componentização, React Router
