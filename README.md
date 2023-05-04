@@ -12,19 +12,38 @@ Todos os arquivos dentro da pasta /src foram criados e desenvolvidos por mim.
 
 ---
 
-### PARA INICIALIZAR O PROJETO
+## Rodando localmente
 
-npm i
+Clone o projeto
 
-npm start
+```bash
+  git clone git@github.com:FernandoGouveia92/projecto-trybetunes.git
+```
 
-a aplicação será inicializada no seu browser
+Entre no diretório do projeto
+
+```bash
+  cd projecto-trybetunes/
+```
+
+Instale as dependências
+
+```bash
+  npm install
+```
+
+Inicie o servidor
+
+```bash
+  npm start
+```
 
 ---
 
 ### ATENTAR PARA VERSÃO DO NODE
 
 Este projeto utiliza a versão 16 do Node.
+
 ---
 
 #### ARQUIVOS E/OU DIRETÓRIOS FEITOS PELA TRYBE
