@@ -1,6 +1,6 @@
 # PROJETO TRYBETUNES
 
-O projeto Trybetunes foi um projeto desenvolvido para praticar a construção de uma aplicação fazendo uso de componentes, depois utilizados para montar páginas, fazendo uso de reutilização de recursos, evitando repetição de código e tornando o código menos verboso e denso, facilitando a sua leitura.
+O projeto Trybetunes foi um projeto desenvolvido para praticar a construção de uma aplicação, fazendo uso de componentes, depois utilizados para montar páginas, fazendo uso de reutilização de código, evitando repetição e tornando-o menos verboso e denso, facilitando a leitura do código.
 
 Sendo um dos primeiros projetos desenvolvidos durante o módulo de front-end na Trybe, entendi a necessidade de componentizar a aplicação para fácil reutilização e, inclusive, estilização (no caso, fiz uso do Styled Components).
 
